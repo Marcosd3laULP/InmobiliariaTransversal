@@ -24,9 +24,10 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding = ActivityMenuBinding.inflate(getLayoutInflater());
+
         // Configurar la Toolbar
         setSupportActionBar(binding.appBarGeneral.toolbar);
 
@@ -40,7 +41,7 @@ public class MenuActivity extends AppCompatActivity {
         NavigationView navigationView = binding.navView;
 
         // Definir qué fragmentos NO mostrarán la flecha de atrás (mostrarán el menú lateral)
-        mAppBarConfiguration = new AppBarConfiguration.Builder() // Agrega tus IDs de fragmentos aquí
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_inicio, R.id.nav_perfil) // Agrega tus IDs de fragmentos aquí
                 .setOpenableLayout(drawer)
                 .build();
 
