@@ -1,6 +1,7 @@
 package com.basico91.inmobiliariatransversal;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,32 +29,36 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
-        // Configurar la Toolbar
         setSupportActionBar(binding.appBarGeneral.toolbar);
 
-        // Configurar el NavController
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment_content_menu);
         NavController navController = navHostFragment.getNavController();
 
-        // Vincular el DrawerLayout y el NavigationView
-        DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
-
-        // Definir qué fragmentos NO mostrarán la flecha de atrás (mostrarán el menú lateral)
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_inicio, R.id.nav_perfil) // Agrega tus IDs de fragmentos aquí
-                .setOpenableLayout(drawer)
+// 1. Primero configuramos la estructura de la barra
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_inicio, R.id.nav_perfil, R.id.nav_inmueble, R.id.nav_inquilino, R.id.nav_contrato, R.id.nav_logOut)
+                .setOpenableLayout(binding.drawerLayout)
                 .build();
 
-        // Configurar la barra superior para que funcione con el menú lateral
+// 2. Vinculamos la barra con el controlador
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+
+// 3. ¡ESTA ES LA CLAVE! Vinculamos el menú lateral con el controlador
+// Asegúrate de que no haya nada después de esto que sobreescriba el listener
+        NavigationUI.setupWithNavController(binding.navView, navController);
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            // Esto te dirá en el LogCat a qué ID intentó ir
+            Log.d("Navegacion", "Cambiando a: " + destination.getLabel());
+        });
     }
 
-    // Importante para que el botón de menú funcione al tocarlo
+
     @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_content_menu);
+        NavController navController = navHostFragment.getNavController();
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
