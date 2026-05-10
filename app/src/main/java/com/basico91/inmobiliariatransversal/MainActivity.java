@@ -48,17 +48,17 @@ public class MainActivity extends AppCompatActivity {
             NavigationUI.setupWithNavController(navigationView, navController);
         }
 
-        BottomNavigationView bottomNavigationView = binding.appBarMain.contentMain.bottomNavView;
+        /*BottomNavigationView bottomNavigationView = binding.appBarMain.contentMain.bottomNavView;
         if (bottomNavigationView != null) {
             mAppBarConfiguration = new AppBarConfiguration.Builder(
                     R.id.nav_transform, R.id.nav_reflow, R.id.nav_slideshow)
-                    .build();
+                    .build();*/
             NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-            NavigationUI.setupWithNavController(bottomNavigationView, navController);
+            /*NavigationUI.setupWithNavController(bottomNavigationView, navController);*/
         }
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         boolean result = super.onCreateOptionsMenu(menu);
         // Using findViewById because NavigationView exists in different layout files
@@ -70,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
             getMenuInflater().inflate(R.menu.overflow, menu);
         }
         return result;
-    }
+    }*/
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.nav_settings) {
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -86,5 +86,5 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
-}
+    }*/
+
