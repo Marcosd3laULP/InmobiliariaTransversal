@@ -15,20 +15,47 @@
         android:id="@+id/nav_inicio"
         android:name="com.basico91.inmobiliariatransversal.InicioFragment"
         android:label="@string/menu_inicio"
-        tools:layout="@layout/fragment_inicio" />
+        tools:layout="@layout/fragment_inicio" >
+        <action
+            android:id="@+id/action_nav_inicio_to_nav_perfil"
+            app:destination="@id/nav_perfil" />
+        <action
+            android:id="@+id/action_nav_inicio_to_nav_inmueble"
+            app:destination="@id/nav_inmueble" />
+        <action
+            android:id="@+id/action_nav_inicio_to_nav_contrato"
+            app:destination="@id/nav_contrato" />
+        <action
+            android:id="@+id/action_nav_inicio_self"
+            app:destination="@id/nav_inicio" />
+        <action
+            android:id="@+id/action_nav_inicio_to_nav_inquilino"
+            app:destination="@id/nav_inquilino" />
+        <action
+            android:id="@+id/action_nav_inicio_to_nav_logOut"
+            app:destination="@id/nav_logOut" />
+    </fragment>
 
 
     <fragment
         android:id="@+id/nav_perfil"
         android:name="com.basico91.inmobiliariatransversal.PerfilFragment"
         android:label="@string/menu_perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_nav_perfil_to_nav_inicio"
+            app:destination="@id/nav_inicio" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_inmueble"
         android:name="com.basico91.inmobiliariatransversal.InmuebleFragment"
         android:label="Inmueble"
-        tools:layout="@layout/fragment_inmueble" />
+        tools:layout="@layout/fragment_inmueble" >
+        <action
+            android:id="@+id/action_nav_inmueble_to_nav_inicio"
+            app:destination="@id/nav_inicio" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_inquilino"
