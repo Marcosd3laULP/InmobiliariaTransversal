@@ -22,6 +22,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMenuBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,18 +36,29 @@ public class MenuActivity extends AppCompatActivity {
                 .findFragmentById(R.id.nav_host_fragment_content_menu);
         NavController navController = navHostFragment.getNavController();
 
-// 1. Primero configuramos la estructura de la barra
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_inicio, R.id.nav_perfil, R.id.nav_inmueble, R.id.nav_inquilino, R.id.nav_contrato, R.id.nav_logOut)
                 .setOpenableLayout(binding.drawerLayout)
                 .build();
 
-// 2. Vinculamos la barra con el controlador
+
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
 
-// 3. ¡ESTA ES LA CLAVE! Vinculamos el menú lateral con el controlador
-// Asegúrate de que no haya nada después de esto que sobreescriba el listener
-        NavigationUI.setupWithNavController(binding.navView, navController);
+
+        // Sustituye la línea NavigationUI.setupWithNavController(binding.navView, navController);
+// por este bloque que fuerza la navegación manual si la automática falla:
+
+        binding.navView.setNavigationItemSelectedListener(item -> {
+            // 1. Intentamos navegar al destino que coincide con el ID del item
+            boolean handled = NavigationUI.onNavDestinationSelected(item, navController);
+
+            // 2. Si navegó correctamente, cerramos el menú lateral
+            if (handled) {
+                binding.drawerLayout.closeDrawers();
+            }
+            return handled;
+        });
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             // Esto te dirá en el LogCat a qué ID intentó ir
             Log.d("Navegacion", "Cambiando a: " + destination.getLabel());
@@ -62,4 +74,4 @@ public class MenuActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    }
+}
