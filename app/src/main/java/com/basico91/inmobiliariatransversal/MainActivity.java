@@ -33,18 +33,23 @@ public class MainActivity extends AppCompatActivity {
             binding.appBarMain.fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).setAnchorView(R.id.fab).show());
         }
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
-        assert navHostFragment != null;
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_content_main);
         NavController navController = navHostFragment.getNavController();
+        /*NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+        assert navHostFragment != null;
+        NavController navController = navHostFragment.getNavController();*/
 
         NavigationView navigationView = binding.navView;
         if (navigationView != null) {
             mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.nav_inicio, R.id.nav_perfil, R.id.nav_inmueble, R.id.nav_navega)
+                    R.id.nav_inicio, R.id.nav_perfil, R.id.nav_inmueble,
+                    R.id.nav_inquilino, R.id.nav_contrato, R.id.nav_logOut)
                     .setOpenableLayout(binding.drawerLayout)
                     .build();
+
             NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-            NavigationUI.setupWithNavController(navigationView, navController);
+            NavigationUI.setupWithNavController(binding.navView, navController);
         }
 
         /*BottomNavigationView bottomNavigationView = binding.appBarMain.contentMain.bottomNavView;
