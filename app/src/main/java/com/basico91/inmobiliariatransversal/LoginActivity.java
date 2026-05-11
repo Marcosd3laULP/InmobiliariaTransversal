@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         vm.getToken().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
 
                 finish();
