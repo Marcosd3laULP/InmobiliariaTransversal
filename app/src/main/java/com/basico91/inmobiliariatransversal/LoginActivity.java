@@ -32,22 +32,9 @@ public class LoginActivity extends AppCompatActivity {
                 String usuario = binding.etEmail.getText().toString();
                 String pass = binding.etpClave.getText().toString();
 
-                vm.login(usuario, pass);
+                vm.recuperarDatos(usuario, pass);
             }
         });
 
-        vm.getToken().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-
-                finish();
-            }
-        });
-
-        vm.getErrorM().observe(this, mensaje -> {
-            Toast.makeText(LoginActivity.this,mensaje, Toast.LENGTH_SHORT).show();
-        });
     }
 }
