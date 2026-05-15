@@ -1,4 +1,4 @@
-package com.basico91.inmobiliariatransversal;
+package com.basico91.inmobiliariatransversal.perfil;
 
 import android.os.Bundle;
 

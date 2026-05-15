@@ -1,14 +1,9 @@
-package com.basico91.inmobiliariatransversal;
+package com.basico91.inmobiliariatransversal.menu;
 
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.Menu;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
+import com.basico91.inmobiliariatransversal.R;
 
-import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
