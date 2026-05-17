@@ -39,6 +39,7 @@ public class LoginActivityViewModel extends AndroidViewModel {
             if(response.isSuccessful()){
                 String token = response.body();
                 Log.d("Token", token);
+                ApiClientt.recuperarToken(context, token);
                 Intent intent = new Intent(context, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);

@@ -21,8 +21,9 @@ import retrofit2.Response;
 public class EditarPerfilViewModel extends AndroidViewModel {
 
     private MutableLiveData<Propietario> propietarioEdit = new MutableLiveData<>();
-    private MutableLiveData<String> mensaje;
-    private Context context;
+    private MutableLiveData<String> mensaje = new MutableLiveData<>();
+    private MutableLiveData<Boolean> exito = new MutableLiveData<>();
+    //private Context context;
     public EditarPerfilViewModel(@NonNull Application application) {
         super(application);
     }
@@ -30,16 +31,29 @@ public class EditarPerfilViewModel extends AndroidViewModel {
     public LiveData<Propietario> getPropietarioEdit(){
         return propietarioEdit;
     }
+    public LiveData<String> getMensaje(){
+        return mensaje;
+    }
+    public LiveData<Boolean> getExito(){
+        return exito;
+    }
 
+    public void RecuperarPropietarioBundle(Bundle bundle){
+        Propietario propietario = (Propietario)
+                bundle.getSerializable("propietario");
+        propietarioEdit.setValue(propietario);
+    }
     public void setPropietarioActual(Propietario propietario){
         if (propietario != null){
             propietarioEdit.setValue(propietario);
         }
     }
 
+
     public void guardarCambios(String nombre, String apellido, String dni, String telefono, String email){
         if(nombre.trim().isEmpty() || apellido.trim().isEmpty() || dni.trim().isEmpty() ||  telefono.trim().isEmpty() || email.trim().isEmpty()){
             mensaje.postValue("No puede dejar campos vacios");
+            return;
         }
         Propietario propietarioActual = propietarioEdit.getValue();
         if(propietarioActual == null){
@@ -50,8 +64,9 @@ public class EditarPerfilViewModel extends AndroidViewModel {
         propietarioActual.setNombre(nombre);
         propietarioActual.setApellido(apellido);
         propietarioActual.setDni(dni);
-        propietarioActual.setTelefono(telefono);
         propietarioActual.setEmail(email);
+        propietarioActual.setTelefono(telefono);
+
 
         String token = ApiClientt.obtenerToken(getApplication());
         if(token == null || token.isEmpty()){
@@ -67,7 +82,7 @@ public class EditarPerfilViewModel extends AndroidViewModel {
             public void onResponse(Call<Propietario> call, Response<Propietario> response) {
                 if(response.isSuccessful() && response.body() != null){
                     propietarioEdit.postValue(response.body());
-                    Toast.makeText(context, "perfil actualizado", Toast.LENGTH_SHORT).show();
+                    exito.postValue(true);
                 }
             }
 
@@ -76,11 +91,5 @@ public class EditarPerfilViewModel extends AndroidViewModel {
                 Log.d("onFailure", t.getMessage());
             }
         });
-    }
-
-    public void RecuperarPropietarioBundle(Bundle bundle){
-        Propietario propietario = (Propietario)
-        bundle.getSerializable("Propietario");
-        propietarioEdit.setValue(propietario);
     }
 }

@@ -51,6 +51,6 @@ public class ApiClientt {
     }
     public static String obtenerToken(Context context) {
         SharedPreferences sp  = context.getSharedPreferences("token.xml", context.MODE_PRIVATE);
-        return sp.getString("token.xml", null);
+        return sp.getString("token", null);
     }
 }
