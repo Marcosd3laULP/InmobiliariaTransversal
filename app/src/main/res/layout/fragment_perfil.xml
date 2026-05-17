@@ -140,7 +140,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etDni" />
 
     <EditText
-        android:id="@+id/etTelefonoEdit"
+        android:id="@+id/etTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -155,7 +155,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etEmailPerfil" />
 
     <Button
-        android:id="@+id/btGuardarCambios"
+        android:id="@+id/btEditarPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"

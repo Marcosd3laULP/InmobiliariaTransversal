@@ -5,15 +5,20 @@ package com.basico91.inmobiliariatransversal.request;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.basico91.inmobiliariatransversal.modelos.Propietario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public class ApiClientt {
     public final static String BASE_URL ="https://capacitacion.alwaysdata.net/";
@@ -30,6 +35,12 @@ public class ApiClientt {
         @FormUrlEncoded
         @POST("api/Propietarios/login")
         Call<String> login(@Field("Usuario") String usuario, @Field("Clave") String clave);
+
+        @GET("api/Propietarios")
+        Call<Propietario> obtenerPerfil(@Header("Authorization") String token);
+
+        @PUT("api/Propietarios/actualizar")
+        Call<Propietario> actualizarPerfil(@Header("Authorization") String token, @Body Propietario propietario);
     }
 
     public  static  void recuperarToken(Context context, String token) {

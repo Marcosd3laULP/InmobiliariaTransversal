@@ -74,7 +74,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/etNombre"
+        android:id="@+id/etNombreEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
@@ -89,7 +89,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvEditar1" />
 
     <EditText
-        android:id="@+id/etApellido"
+        android:id="@+id/etApellidoEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
@@ -101,10 +101,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/etNombreEdit" />
 
     <EditText
-        android:id="@+id/etDni"
+        android:id="@+id/etDniEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -116,10 +116,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etApellido" />
+        app:layout_constraintTop_toBottomOf="@+id/etApellidoEdit" />
 
     <EditText
-        android:id="@+id/etEmailPerfil"
+        android:id="@+id/etEmailPerfilEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -131,7 +131,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDni" />
+        app:layout_constraintTop_toBottomOf="@+id/etDniEdit" />
 
     <EditText
         android:id="@+id/etTelefonoEdit"
@@ -146,7 +146,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmailPerfil" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmailPerfilEdit" />
 
     <Button
         android:id="@+id/btGuardarCambios"
