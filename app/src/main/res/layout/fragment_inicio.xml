@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".menu.InicioFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <org.maplibre.android.maps.MapView
+        android:id="@+id/Mapa"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Interceptor buscar, sirve para retrofit" />
+        android:layout_height="match_parent">
+    </org.maplibre.android.maps.MapView>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
