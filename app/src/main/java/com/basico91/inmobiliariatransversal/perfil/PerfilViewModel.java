@@ -39,10 +39,10 @@ public class PerfilViewModel extends AndroidViewModel {
             return;
         }
 
-        String tokenFormateado = "Bearer " + token;
+
 
         ApiClientt.ServicioInmobiliaria servicio = ApiClientt.getServicio();
-        Call<Propietario> call = servicio.obtenerPerfil(tokenFormateado);
+        Call<Propietario> call = servicio.obtenerPerfil(token);
 
         call.enqueue(new Callback<Propietario>() {
             @Override

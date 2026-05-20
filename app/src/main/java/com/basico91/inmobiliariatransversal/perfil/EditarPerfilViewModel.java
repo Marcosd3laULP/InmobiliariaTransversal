@@ -73,10 +73,10 @@ public class EditarPerfilViewModel extends AndroidViewModel {
             mensaje.postValue("Sesion expirada inicie sesion nuevamente");
             return;
         }
-        String tokenFormateado = "Bearer " + token;
+
 
         ApiClientt.ServicioInmobiliaria servicio = ApiClientt.getServicio();
-        Call<Propietario> call = servicio.actualizarPerfil(tokenFormateado, propietarioActual);
+        Call<Propietario> call = servicio.actualizarPerfil(token, propietarioActual);
         call.enqueue(new Callback<Propietario>() {
             @Override
             public void onResponse(Call<Propietario> call, Response<Propietario> response) {

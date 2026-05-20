@@ -73,6 +73,11 @@ public class PerfilFragment extends Fragment {
                 nav.navigate(R.id.action_nav_perfil_to_editarPerfilFragment, bundle);
 
         });
+
+        binding.btCambiarContrasena.setOnClickListener(v -> {
+            NavController nav = Navigation.findNavController(v);
+            nav.navigate(R.id.action_nav_perfil_to_cambiarPassFragment);
+        });
     }
 
     @Override

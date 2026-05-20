@@ -41,12 +41,16 @@ public class ApiClientt {
 
         @PUT("api/Propietarios/actualizar") //SALE EN GRIS COMO SI NUNCA LO HUBIERAN USADO
         Call<Propietario> actualizarPerfil(@Header("Authorization") String token, @Body Propietario propietario);
+
+        @FormUrlEncoded
+        @PUT("api/Propietarios/changePassword")
+        Call<Void> cambiarContrasenia(@Header("Authorization") String token, @Field("currentPassword") String actual, @Field("newPassword") String nueva);
     }
 
     public  static  void recuperarToken(Context context, String token) {
         SharedPreferences sp  = context.getSharedPreferences("token.xml", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString("token", token);
+        editor.putString("token", "Bearer " +token);
         editor.apply();
     }
     public static String obtenerToken(Context context) {
