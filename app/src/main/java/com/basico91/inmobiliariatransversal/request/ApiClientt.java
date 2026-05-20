@@ -39,7 +39,7 @@ public class ApiClientt {
         @GET("api/Propietarios")
         Call<Propietario> obtenerPerfil(@Header("Authorization") String token);
 
-        @PUT("api/Propietarios/actualizar")
+        @PUT("api/Propietarios/actualizar") //SALE EN GRIS COMO SI NUNCA LO HUBIERAN USADO
         Call<Propietario> actualizarPerfil(@Header("Authorization") String token, @Body Propietario propietario);
     }
 

@@ -39,7 +39,6 @@ public class PerfilViewModel extends AndroidViewModel {
             return;
         }
 
-        // CORREGIDO: Espacio agregado después de Bearer
         String tokenFormateado = "Bearer " + token;
 
         ApiClientt.ServicioInmobiliaria servicio = ApiClientt.getServicio();

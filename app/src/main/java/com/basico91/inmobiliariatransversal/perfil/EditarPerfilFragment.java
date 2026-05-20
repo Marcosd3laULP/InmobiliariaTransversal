@@ -19,9 +19,9 @@ import com.basico91.inmobiliariatransversal.databinding.FragmentPerfilBinding;
 
 
 public class EditarPerfilFragment extends Fragment {
+    private FragmentEditarPerfilBinding binding;
 
     private EditarPerfilViewModel vm;
-    private FragmentEditarPerfilBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,27 +34,26 @@ public class EditarPerfilFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         vm = new ViewModelProvider(this).get(EditarPerfilViewModel.class);
 
         vm.RecuperarPropietarioBundle(getArguments());
 
         vm.getPropietarioEdit().observe(getViewLifecycleOwner(), propietario -> {
-            binding.etNombreEdit.setText(propietario.getNombre());
-            binding.etApellidoEdit.setText(propietario.getApellido());
-            binding.etDniEdit.setText(propietario.getDni());
-            binding.etEmailPerfilEdit.setText(propietario.getEmail());
-            binding.etTelefonoEdit.setText(propietario.getTelefono());
+            binding.etNombreEditar.setText(propietario.getNombre());
+            binding.etApellidoEditar.setText(propietario.getApellido());
+            binding.etDniEditar.setText(propietario.getDni());
+            binding.etEmailEditar.setText(propietario.getEmail());
+            binding.etTelefonoEditar.setText(propietario.getTelefono());
 
         });
 
         binding.btGuardarCambios.setOnClickListener(v -> {
             vm.guardarCambios(
-                    binding.etNombreEdit.getText().toString(),
-                    binding.etApellidoEdit.getText().toString(),
-                    binding.etDniEdit.getText().toString(),
-                    binding.etEmailPerfilEdit.getText().toString(),
-                    binding.etTelefonoEdit.getText().toString()
+                    binding.etNombreEditar.getText().toString(),
+                    binding.etApellidoEditar.getText().toString(),
+                    binding.etDniEditar.getText().toString(),
+                    binding.etEmailEditar.getText().toString(),
+                    binding.etTelefonoEditar.getText().toString()
 
             );
         });
@@ -69,7 +68,7 @@ public class EditarPerfilFragment extends Fragment {
             }
         });
 
-// 2. Observador para cuando todo sale bien
+
         vm.getExito().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean fueExitoso) {

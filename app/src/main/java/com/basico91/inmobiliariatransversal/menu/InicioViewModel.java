@@ -25,24 +25,21 @@ public class InicioViewModel extends AndroidViewModel {
         return mapaActualM;
     }
 
-    public void  cargarMapa(){
-        MapaActual mapa = new MapaActual();
-        mapaActualM.setValue(mapa );
-    }
+
 
     public static class MapaActual implements OnMapReadyCallback{
 
         public LatLng SanLuis = new LatLng(-33.288576, -66.322482);
         @Override
         public void onMapReady(@NonNull MapLibreMap mapLibreMap) {
-            mapLibreMap.setStyle("", new Style.OnStyleLoaded() {
+            mapLibreMap.setStyle("https://api.maptiler.com/maps/satellite-v4/style.json?key=XtG3rE3azraNtpgDzYUv", new Style.OnStyleLoaded() {
                 @Override
                 public void onStyleLoaded(@NonNull Style style) {
                     mapLibreMap.addMarker(new MarkerOptions().position(SanLuis).title("San Luis"));
 
                     CameraPosition posicionDeLaCam = new CameraPosition.Builder()
                             .target(SanLuis)
-                            .zoom(4)
+                            .zoom(14)
                             .bearing(0)
                             .tilt(0)
                             .build();
@@ -51,5 +48,10 @@ public class InicioViewModel extends AndroidViewModel {
                 }
             });
         }
+    }
+
+    public void  cargarMapa(){
+        MapaActual mapa = new MapaActual();
+        mapaActualM.setValue(mapa );
     }
 }
