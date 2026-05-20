@@ -35,10 +35,10 @@ public class InicioViewModel extends AndroidViewModel {
         public LatLng SanLuis = new LatLng(-33.288576, -66.322482);
         @Override
         public void onMapReady(@NonNull MapLibreMap mapLibreMap) {
-            MapLibreMap.setStyle("", new Style.OnStyleLoaded() {
+            mapLibreMap.setStyle("", new Style.OnStyleLoaded() {
                 @Override
                 public void onStyleLoaded(@NonNull Style style) {
-                    MapLibreMap.addMarker(new MarkerOptions().position(SanLuis).title("San Luis"));
+                    mapLibreMap.addMarker(new MarkerOptions().position(SanLuis).title("San Luis"));
 
                     CameraPosition posicionDeLaCam = new CameraPosition.Builder()
                             .target(SanLuis)
@@ -47,7 +47,7 @@ public class InicioViewModel extends AndroidViewModel {
                             .tilt(0)
                             .build();
 
-                            MapLibreMap.setCameraPosition(posicionDeLaCam);
+                            mapLibreMap.setCameraPosition(posicionDeLaCam);
                 }
             });
         }
