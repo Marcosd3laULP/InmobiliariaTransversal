@@ -82,7 +82,10 @@ public class EditarPerfilViewModel extends AndroidViewModel {
             public void onResponse(Call<Propietario> call, Response<Propietario> response) {
                 if(response.isSuccessful() && response.body() != null){
                     propietarioEdit.postValue(response.body());
+                    mensaje.postValue("Perfil actualizado con exito");
                     exito.postValue(true);
+                } else {
+                    mensaje.postValue("Error al actualizar el perfil");
                 }
             }
 

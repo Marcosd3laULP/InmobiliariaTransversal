@@ -58,7 +58,6 @@ public class EditarPerfilFragment extends Fragment {
             );
         });
 
-        // 1. Observador para los mensajes generales de error o advertencia
         vm.getMensaje().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String textoMensaje) {
@@ -73,10 +72,7 @@ public class EditarPerfilFragment extends Fragment {
             @Override
             public void onChanged(Boolean fueExitoso) {
                 if (fueExitoso) {
-                    // Mostramos el Toast desde la Vista (Donde corresponde)
                     Toast.makeText(getContext(), "Perfil actualizado con éxito", Toast.LENGTH_SHORT).show();
-
-                    // Volvemos automáticamente al fragment de perfil
                     Navigation.findNavController(getView()).popBackStack();
                 }
             }

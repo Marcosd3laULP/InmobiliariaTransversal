@@ -62,20 +62,16 @@ public class PerfilFragment extends Fragment {
         // 3. Disparamos la carga de datos de la API
         vm.cargarDatos();
 
-        // 4. Configuración del botón de edición corregido (Clave minúscula y control de nulos)
+        // 4. Configuración del botón de edición
         binding.btEditarPerfil.setOnClickListener(v -> {
             Propietario actual = vm.getPropiertario().getValue();
 
-            if (actual != null) {
                 Bundle bundle = new Bundle();
-                // CORREGIDO: "propietario" con p minúscula para coincidir con el EditarPerfilViewModel
                 bundle.putSerializable("propietario", actual);
 
                 NavController nav = Navigation.findNavController(v);
                 nav.navigate(R.id.action_nav_perfil_to_editarPerfilFragment, bundle);
-            } else {
-                Toast.makeText(getContext(), "Espera a que carguen los datos para poder editarlos", Toast.LENGTH_SHORT).show();
-            }
+
         });
     }
 
