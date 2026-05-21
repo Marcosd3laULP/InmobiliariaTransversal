@@ -5,9 +5,12 @@ package com.basico91.inmobiliariatransversal.request;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.basico91.inmobiliariatransversal.modelos.Inmueble;
 import com.basico91.inmobiliariatransversal.modelos.Propietario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -45,6 +48,9 @@ public class ApiClientt {
         @FormUrlEncoded
         @PUT("api/Propietarios/changePassword")
         Call<Void> cambiarContrasenia(@Header("Authorization") String token, @Field("currentPassword") String actual, @Field("newPassword") String nueva);
+
+        @GET("api/Inmuebles")
+        Call<List<Inmueble>> listarTodosInmuebles(@Header("Authorization") String token);
     }
 
     public  static  void recuperarToken(Context context, String token) {

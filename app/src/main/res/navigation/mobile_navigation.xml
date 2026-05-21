@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/nav_inmueble"
-        android:name="com.basico91.inmobiliariatransversal.InmuebleFragment"
+        android:name="com.basico91.inmobiliariatransversal.inmueble.InmuebleFragment"
         android:label="Inmueble"
         tools:layout="@layout/fragment_inmueble" >
     </fragment>
