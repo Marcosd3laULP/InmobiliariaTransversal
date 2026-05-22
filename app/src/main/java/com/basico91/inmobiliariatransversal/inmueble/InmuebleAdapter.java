@@ -3,6 +3,7 @@ package com.basico91.inmobiliariatransversal.inmueble;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +17,13 @@ import java.util.List;
 public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.InmuebleViewHolder> {
 
     private List<Inmueble> listaDeInmuebles = new ArrayList<>();
-
+    private OnItemClickListener listener;
+    public interface OnItemClickListener {
+        void onItemClick(Inmueble inmueble);
+    }
+    public InmuebleAdapter(OnItemClickListener listener){
+        this.listener = listener;
+    }
     public void setListaInmuebles(List<Inmueble> inmuebles){
         this.listaDeInmuebles = inmuebles;
 
@@ -30,7 +37,7 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.Inmueb
     }
 
     @Override
-    public void onBindViewHolder(@NonNull InmuebleAdapter.InmuebleViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull InmuebleViewHolder holder, int position) {
         Inmueble inmueble = listaDeInmuebles.get(position);
         holder.bind(inmueble);
     }
@@ -49,6 +56,12 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.Inmueb
         public void bind(Inmueble inmueble) {
         binding.tvDireccion.setText(inmueble.getDirrecion());
         binding.tvValor.setText("$ " + inmueble.getValor());
+
+        itemView.setOnClickListener(v -> {
+            if(listener != null){
+                listener.onItemClick(inmueble);
+            }
+        });
         }
     }
 }

@@ -32,8 +32,18 @@ public class InmuebleFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         binding = FragmentInmuebleBinding.inflate(inflater, container, false);
-        adaptador = new InmuebleAdapter();
+        adaptador = new InmuebleAdapter(inmueble -> {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("inmueble", inmueble);
 
+        DetalleInmuebleFragment detalleFragment = new DetalleInmuebleFragment();
+        detalleFragment.setArguments(bundle);
+
+        getParentFragmentManager().beginTransaction()
+                        .replace(R.id.nav_inmueble, detalleFragment)
+                                .addToBackStack(null)
+                                        .commit();
+        });
         binding.rvInmuebles.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.rvInmuebles.setAdapter(adaptador);
 

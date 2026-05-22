@@ -10,17 +10,19 @@ public class Inmueble implements Serializable {
     private String tipo;
     private String ambientes;
     private String superficie;
-    private String latitud;
+    private double latitud;
 
-    private String valor;
+    private double valor;
     private String imagen;
-    private String longitud;
+    private double longitud;
     private Propietario duenio;
+
+    private boolean disponibilidad;
 
     public Inmueble() {
     }
 
-    public Inmueble(int idInmueble, String dirrecion, String uso, String tipo, String ambientes, String superficie, String latitud, String valor, String imagen, String longitud, Propietario duenio) {
+    public Inmueble(int idInmueble, String dirrecion, String uso, String tipo, String ambientes, String superficie, double latitud, double valor, String imagen, double longitud, boolean disponibilidad, Propietario duenio) {
         IdInmueble = idInmueble;
         this.dirrecion = dirrecion;
         this.uso = uso;
@@ -31,6 +33,7 @@ public class Inmueble implements Serializable {
         this.valor = valor;
         this.imagen = imagen;
         this.longitud = longitud;
+        this.disponibilidad = disponibilidad;
         this.duenio = duenio;
     }
 
@@ -82,19 +85,19 @@ public class Inmueble implements Serializable {
         this.superficie = superficie;
     }
 
-    public String getLatitud() {
+    public double getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(String latitud) {
+    public void setLatitud(double latitud) {
         this.latitud = latitud;
     }
 
-    public String getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 
@@ -106,12 +109,20 @@ public class Inmueble implements Serializable {
         this.imagen = imagen;
     }
 
-    public String getLongitud() {
+    public double getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(String longitud) {
+    public void setLongitud(double longitud) {
         this.longitud = longitud;
+    }
+
+    public boolean isDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(boolean disponibilidad) {
+        this.disponibilidad = disponibilidad;
     }
 
     public Propietario getDuenio() {
@@ -122,3 +133,4 @@ public class Inmueble implements Serializable {
         this.duenio = duenio;
     }
 }
+
