@@ -40,7 +40,7 @@ public class EditarPerfilViewModel extends AndroidViewModel {
 
     public void RecuperarPropietarioBundle(Bundle bundle){
         Propietario propietario = (Propietario)
-                bundle.getSerializable("propietario");
+                bundle.getSerializable("propietario", Propietario.class);
         propietarioEdit.setValue(propietario);
     }
     public void setPropietarioActual(Propietario propietario){
