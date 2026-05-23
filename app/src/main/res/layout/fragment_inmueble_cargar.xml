@@ -214,4 +214,12 @@
         android:text="Cargar"
         app:layout_constraintStart_toEndOf="@+id/etCargarLatitud"
         app:layout_constraintTop_toBottomOf="@+id/etCargarSuperficie" />
+
+    <ImageView
+        android:id="@+id/ivCargarImagen"
+        android:layout_width="139dp"
+        android:layout_height="146dp"
+        app:srcCompat="@drawable/ic_camera_black_24dp"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="551dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

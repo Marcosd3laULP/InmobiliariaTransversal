@@ -58,5 +58,10 @@ public class InmuebleFragment extends Fragment {
             adaptador.setListaInmuebles(inmuebles);
         });
         vm.cargarInmuebles();
+
+        binding.fabNuevoInmueble.setOnClickListener(v -> {
+           NavController nav = Navigation.findNavController(requireView());
+            nav.navigate(R.id.action_nav_inmueble_to_cargarInmuebleFragment);
+        });
     }
 }

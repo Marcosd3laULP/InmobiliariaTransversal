@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_nav_inmueble_to_detalleInmuebleFragment"
             app:destination="@id/detalleInmuebleFragment" />
+        <action
+            android:id="@+id/action_nav_inmueble_to_cargarInmuebleFragment"
+            app:destination="@id/cargarInmuebleFragment" />
     </fragment>
 
     <fragment
@@ -78,6 +81,14 @@
         android:label="DetalleInmuebleFragment" >
         <action
             android:id="@+id/action_detalleInmuebleFragment_to_nav_inmueble"
+            app:destination="@id/nav_inmueble" />
+    </fragment>
+    <fragment
+        android:id="@+id/cargarInmuebleFragment"
+        android:name="com.basico91.inmobiliariatransversal.inmueble.CargarInmuebleFragment"
+        android:label="CargarInmuebleFragment" >
+        <action
+            android:id="@+id/action_cargarInmuebleFragment_to_nav_inmueble"
             app:destination="@id/nav_inmueble" />
     </fragment>
 </navigation>
