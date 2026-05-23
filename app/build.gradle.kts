@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.android.sdk)
     implementation(libs.gl.android.sdk)
     implementation(libs.lifecycle.viewmodel)
+    implementation(libs.glide)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

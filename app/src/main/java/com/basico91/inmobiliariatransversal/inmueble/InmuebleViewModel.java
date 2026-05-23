@@ -23,13 +23,9 @@ public class InmuebleViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<Inmueble>> listadoInmuebleM = new MutableLiveData<>();
     private MutableLiveData<Inmueble> inmuebleDetalleM = new MutableLiveData<>();
-    public InmuebleViewModel(@NonNull Application application, @NonNull SavedStateHandle savedStateHandle) {
+    public InmuebleViewModel(@NonNull Application application) {
         super(application);
-        Inmueble inmueble = savedStateHandle.get("Inmueble");
 
-        if(inmueble !=null){
-            inmuebleDetalleM.setValue(inmueble);
-        }
     }
 
     public LiveData<List<Inmueble>> getListadoInmuebles(){
@@ -38,6 +34,11 @@ public class InmuebleViewModel extends AndroidViewModel {
 
     public LiveData<Inmueble> getInmuebleDetalle(){ return inmuebleDetalleM; }
 
+    public void recuperarInmueble(Bundle bundle){
+        Inmueble inmueble = (Inmueble)
+        bundle.getSerializable("inmueble", Inmueble.class);
+        inmuebleDetalleM.setValue(inmueble);
+    }
 
     public void cargarInmuebles(){
         String token = ApiClientt.obtenerToken(getApplication());

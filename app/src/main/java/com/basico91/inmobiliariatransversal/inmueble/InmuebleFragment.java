@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -36,13 +38,10 @@ public class InmuebleFragment extends Fragment {
             Bundle bundle = new Bundle();
             bundle.putSerializable("inmueble", inmueble);
 
-        DetalleInmuebleFragment detalleFragment = new DetalleInmuebleFragment();
-        detalleFragment.setArguments(bundle);
+        NavController nav = Navigation.findNavController(requireView());
+        nav.navigate(R.id.action_nav_inmueble_to_detalleInmuebleFragment, bundle);
 
-        getParentFragmentManager().beginTransaction()
-                        .replace(R.id.nav_inmueble, detalleFragment)
-                                .addToBackStack(null)
-                                        .commit();
+
         });
         binding.rvInmuebles.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.rvInmuebles.setAdapter(adaptador);

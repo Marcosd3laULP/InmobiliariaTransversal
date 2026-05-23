@@ -8,21 +8,25 @@ public class Inmueble implements Serializable {
     private String dirrecion;
     private String uso;
     private String tipo;
-    private String ambientes;
-    private String superficie;
+    private int ambientes;
+    private double superficie;
     private String latitud;
 
     private double valor;
     private String imagen;
     private String longitud;
+
+    private int idPropietario;
     private Propietario duenio;
 
-    private boolean disponibilidad;
+    private boolean disponible;
+
+    private boolean tieneContratoVigente;
 
     public Inmueble() {
     }
 
-    public Inmueble(int idInmueble, String dirrecion, String uso, String tipo, String ambientes, String superficie, String latitud, double valor, String imagen, String longitud, boolean disponibilidad, Propietario duenio) {
+    public Inmueble(int idInmueble, String dirrecion, String uso, String tipo, int ambientes, double superficie, String latitud, double valor, String imagen, String longitud, int idPropietario, Propietario duenio, boolean disponible, boolean tieneContratoVigente) {
         IdInmueble = idInmueble;
         this.dirrecion = dirrecion;
         this.uso = uso;
@@ -33,8 +37,10 @@ public class Inmueble implements Serializable {
         this.valor = valor;
         this.imagen = imagen;
         this.longitud = longitud;
-        this.disponibilidad = disponibilidad;
+        this.idPropietario = idPropietario;
         this.duenio = duenio;
+        this.disponible = disponible;
+        this.tieneContratoVigente = tieneContratoVigente;
     }
 
     public int getIdInmueble() {
@@ -69,19 +75,19 @@ public class Inmueble implements Serializable {
         this.tipo = tipo;
     }
 
-    public String getAmbientes() {
+    public int getAmbientes() {
         return ambientes;
     }
 
-    public void setAmbientes(String ambientes) {
+    public void setAmbientes(int ambientes) {
         this.ambientes = ambientes;
     }
 
-    public String getSuperficie() {
+    public double getSuperficie() {
         return superficie;
     }
 
-    public void setSuperficie(String superficie) {
+    public void setSuperficie(double superficie) {
         this.superficie = superficie;
     }
 
@@ -117,12 +123,12 @@ public class Inmueble implements Serializable {
         this.longitud = longitud;
     }
 
-    public boolean isDisponibilidad() {
-        return disponibilidad;
+    public int getIdPropietario() {
+        return idPropietario;
     }
 
-    public void setDisponibilidad(boolean disponibilidad) {
-        this.disponibilidad = disponibilidad;
+    public void setIdPropietario(int idPropietario) {
+        this.idPropietario = idPropietario;
     }
 
     public Propietario getDuenio() {
@@ -131,6 +137,22 @@ public class Inmueble implements Serializable {
 
     public void setDuenio(Propietario duenio) {
         this.duenio = duenio;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    public boolean isTieneContratoVigente() {
+        return tieneContratoVigente;
+    }
+
+    public void setTieneContratoVigente(boolean tieneContratoVigente) {
+        this.tieneContratoVigente = tieneContratoVigente;
     }
 }
 
