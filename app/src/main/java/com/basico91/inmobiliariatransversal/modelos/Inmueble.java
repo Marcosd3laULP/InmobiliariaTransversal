@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Inmueble implements Serializable {
 
     private int IdInmueble;
-    private String dirrecion;
+    private String direccion;
     private String uso;
     private String tipo;
     private int ambientes;
@@ -28,7 +28,7 @@ public class Inmueble implements Serializable {
 
     public Inmueble(int idInmueble, String dirrecion, String uso, String tipo, int ambientes, double superficie, String latitud, double valor, String imagen, String longitud, int idPropietario, Propietario duenio, boolean disponible, boolean tieneContratoVigente) {
         IdInmueble = idInmueble;
-        this.dirrecion = dirrecion;
+        this.direccion = dirrecion;
         this.uso = uso;
         this.tipo = tipo;
         this.ambientes = ambientes;
@@ -51,12 +51,12 @@ public class Inmueble implements Serializable {
         IdInmueble = idInmueble;
     }
 
-    public String getDirrecion() {
-        return dirrecion;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDirrecion(String dirrecion) {
-        this.dirrecion = dirrecion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getUso() {

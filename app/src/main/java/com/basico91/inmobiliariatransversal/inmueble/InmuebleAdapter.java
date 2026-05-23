@@ -1,15 +1,16 @@
 package com.basico91.inmobiliariatransversal.inmueble;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.basico91.inmobiliariatransversal.R;
 import com.basico91.inmobiliariatransversal.databinding.CardInmuebleBinding;
 import com.basico91.inmobiliariatransversal.modelos.Inmueble;
+import com.basico91.inmobiliariatransversal.request.ApiClientt;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,8 +55,16 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.Inmueb
         }
 
         public void bind(Inmueble inmueble) {
-        binding.tvDireccion.setText(inmueble.getDirrecion());
-        binding.tvValor.setText("$ " + inmueble.getValor());
+            binding.tvDireccion.setText(inmueble.getDireccion());
+            binding.tvValor.setText("$ " + inmueble.getValor());
+
+            String urlImagen = ApiClientt.BASE_URL + inmueble.getImagen();
+
+            Glide.with(itemView.getContext())
+                            .load(urlImagen)
+                                    .placeholder(R.drawable.ic_launcher_foreground)
+                                            .error(R.drawable.ic_slideshow_black_24dp)
+                                                    .into(binding.ivFotoInmueble);
 
         itemView.setOnClickListener(v -> {
             if(listener != null){

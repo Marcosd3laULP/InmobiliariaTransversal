@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvCargarInmueble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:text="Nuevo inmueble"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvCargarDireccion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCargarDireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="203dp"
+        android:text="Direccion"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCargarValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="22dp"
+        android:text="Valor"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCargarDireccion" />
+
+    <TextView
+        android:id="@+id/tvCargarTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="10dp"
+        android:text="Tipo"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCargarValor" />
+
+    <EditText
+        android:id="@+id/etCargarDireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="@+id/tvCargarDireccion"
+        app:layout_constraintTop_toBottomOf="@+id/tvCargarDireccion" />
+
+    <EditText
+        android:id="@+id/etCargarValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="@+id/tvCargarValor"
+        app:layout_constraintTop_toBottomOf="@+id/tvCargarValor" />
+
+    <EditText
+        android:id="@+id/etCargarUso"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="41dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/tvCargarLatitud"
+        app:layout_constraintEnd_toEndOf="@+id/etCargarDireccion"
+        app:layout_constraintStart_toStartOf="@+id/tvCargarUso"
+        app:layout_constraintTop_toTopOf="@+id/tvCargarUso" />
+
+    <TextView
+        android:id="@+id/tvCargarUso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="8dp"
+        android:text="Uso"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/etCargarTipo"
+        app:layout_constraintTop_toBottomOf="@+id/etCargarValor" />
+
+    <EditText
+        android:id="@+id/etCargarTipo"
+        android:layout_width="92dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="@+id/etCargarUso"
+        app:layout_constraintStart_toStartOf="@+id/tvCargarTipo"
+        app:layout_constraintTop_toBottomOf="@+id/tvCargarTipo" />
+
+    <EditText
+        android:id="@+id/etCargarLatitud"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/btCargarImagen"
+        app:layout_constraintEnd_toEndOf="@+id/tvCargarUso"
+        app:layout_constraintStart_toStartOf="@+id/tvCargarLatitud"
+        app:layout_constraintTop_toTopOf="@+id/etCargarSuperficie" />
+
+    <EditText
+        android:id="@+id/etCargarSuperficie"
+        android:layout_width="59dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="106dp"
+        android:layout_marginBottom="107dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/btCargar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCargarUso" />
+
+    <TextView
+        android:id="@+id/tvCargarLatitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:text="Latitud"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/etCargarLatitud"
+        app:layout_constraintStart_toEndOf="@+id/tvCargarLongitud" />
+
+    <EditText
+        android:id="@+id/etCargarLongitud"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="@+id/etCargarSuperficie"
+        app:layout_constraintEnd_toEndOf="@+id/tvCargarLongitud"
+        app:layout_constraintStart_toStartOf="@+id/etCargarValor"
+        app:layout_constraintTop_toBottomOf="@+id/tvCargarLongitud" />
+
+    <TextView
+        android:id="@+id/tvCargarLongitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="2dp"
+        android:text="Longitud"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCargarLatitud"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etCargarAmbiente"
+        android:layout_width="59dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="19dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="@+id/etCargarUso"
+        app:layout_constraintEnd_toEndOf="@+id/tvCargarAmbiente"
+        app:layout_constraintStart_toEndOf="@+id/etCargarSuperficie"
+        app:layout_constraintTop_toBottomOf="@+id/tvCargarAmbiente" />
+
+    <TextView
+        android:id="@+id/tvCargarAmbiente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="43dp"
+        android:text="Ambientes"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/etCargarUso"
+        app:layout_constraintStart_toEndOf="@+id/etCargarUso" />
+
+    <Button
+        android:id="@+id/btCargar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="39dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btCargarImagen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:text="Cargar"
+        app:layout_constraintStart_toEndOf="@+id/etCargarLatitud"
+        app:layout_constraintTop_toBottomOf="@+id/etCargarSuperficie" />
+</androidx.constraintlayout.widget.ConstraintLayout>
