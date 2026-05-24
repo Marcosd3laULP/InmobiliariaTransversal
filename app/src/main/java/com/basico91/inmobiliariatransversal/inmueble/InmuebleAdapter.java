@@ -1,5 +1,6 @@
 package com.basico91.inmobiliariatransversal.inmueble;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -55,22 +56,27 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.Inmueb
         }
 
         public void bind(Inmueble inmueble) {
-            binding.tvDireccion.setText(inmueble.getDireccion());
+            binding.tvDireccion.setText(inmueble.getDireccion().trim());
             binding.tvValor.setText("$ " + inmueble.getValor());
 
-            String urlImagen = ApiClientt.BASE_URL + inmueble.getImagen();
+            // 🟢 CORRECCIÓN: Agregamos el "/" en medio por si las dudas
+            String rutaImagen = inmueble.getImagen() != null ? inmueble.getImagen().trim() : "";
+            String urlImagen = ApiClientt.BASE_URL + "/" + rutaImagen;
+
+            // Reemplazamos barras dobles "//" por una sola si es que quedaron juntas (excepto las de http://)
+            urlImagen = urlImagen.replaceAll("(?<!https?|ftp):/+", "/");
 
             Glide.with(itemView.getContext())
-                            .load(urlImagen)
-                                    .placeholder(R.drawable.ic_launcher_foreground)
-                                            .error(R.drawable.ic_slideshow_black_24dp)
-                                                    .into(binding.ivFotoInmueble);
+                    .load(urlImagen)
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .error(R.drawable.ic_slideshow_black_24dp) // Si salta este icono, la URL sigue mal construida
+                    .into(binding.ivFotoInmueble);
 
-        itemView.setOnClickListener(v -> {
-            if(listener != null){
-                listener.onItemClick(inmueble);
-            }
-        });
+            itemView.setOnClickListener(v -> {
+                if(listener != null){
+                    listener.onItemClick(inmueble);
+                }
+            });
         }
     }
 }

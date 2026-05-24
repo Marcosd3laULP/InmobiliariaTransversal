@@ -44,10 +44,10 @@ public class DetalleInmuebleFragment extends Fragment {
             binding.tvDetalleValor.setText("$ " +inmueble.getValor());
             binding.tvDetalleUso.setText(inmueble.getUso());
             binding.tvDetalleTipo.setText(inmueble.getTipo());
-            binding.tvDetallesAmbientes.setText("Ambientes " +inmueble.getAmbientes());
-            binding.tvDetalleSuperficie.setText("Superficie " +inmueble.getSuperficie());
-            binding.tvDetalleLatitud.setText(inmueble.getLatitud());
-            binding.tvDetalleLongitud.setText(inmueble.getLongitud());
+            binding.tvDetallesAmbientes.setText("" +inmueble.getAmbientes());
+            binding.tvDetalleSuperficie.setText("" +inmueble.getSuperficie());
+            binding.tvDetalleLatitud.setText(String.valueOf(inmueble.getLatitud()));
+            binding.tvDetalleLongitud.setText(String.valueOf(inmueble.getLongitud()));
 
         });
     }

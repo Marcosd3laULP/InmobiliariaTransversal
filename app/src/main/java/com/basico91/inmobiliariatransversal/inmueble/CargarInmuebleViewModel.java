@@ -53,10 +53,11 @@ public class CargarInmuebleViewModel extends AndroidViewModel {
         try {
             //Par = parseado
             int ambientesPar = Integer.parseInt(ambientes);
-            double superficiePar = Double.parseDouble(superficie);
+            int superficiePar = Integer.parseInt(superficie);
             double valorPar = Double.parseDouble(valor);
             double latitudPar = Double.parseDouble(latitud);
             double longitudPar = Double.parseDouble(longitud);
+
 
             Inmueble nuevoInmueble = new Inmueble();
             nuevoInmueble.setDireccion(direccion);

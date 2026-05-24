@@ -1,10 +1,12 @@
 package com.basico91.inmobiliariatransversal.inmueble;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.net.Uri;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContract;
@@ -14,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.basico91.inmobiliariatransversal.databinding.FragmentInmuebleCargarBinding;
 import com.bumptech.glide.Glide;
@@ -84,12 +87,19 @@ public class CargarInmuebleFragment extends Fragment {
                     latitud,
                     longitud
             );
+            Toast.makeText(getContext(), "Inmueble cargado con exito", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(getView()).popBackStack();
         });
     vm.getError().observe(getViewLifecycleOwner(), new Observer<String>() {
         @Override
         public void onChanged(String s) {
-            binding.tvCargarInmueble.setText(s);
+            binding.textView3.setTextColor(Color.RED);
         }
     });
+    }
+    @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+        binding = null;
     }
 }
