@@ -60,6 +60,10 @@ public class ApiClientt {
         @POST("api/Inmuebles/cargar")
         Call<Inmueble> cargarInmueble(@Header("Authorization") String token, @Part MultipartBody.Part imagen, @Part("inmueble") RequestBody inmuebleJson);
 
+        @PUT("api/Inmuebles/actualizar")
+        Call<Inmueble> cambiarDisponibilidad(@Header("Authorization") String token, @Body Inmueble inmueble);
+
+
     }
 
     public  static  void recuperarToken(Context context, String token) {

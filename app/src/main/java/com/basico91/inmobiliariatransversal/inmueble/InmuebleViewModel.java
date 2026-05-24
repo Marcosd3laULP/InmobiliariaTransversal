@@ -23,6 +23,8 @@ public class InmuebleViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<Inmueble>> listadoInmuebleM = new MutableLiveData<>();
     private MutableLiveData<Inmueble> inmuebleDetalleM = new MutableLiveData<>();
+
+    private MutableLiveData<String> textoDisponible = new MutableLiveData<>();
     public InmuebleViewModel(@NonNull Application application) {
         super(application);
 
@@ -34,10 +36,20 @@ public class InmuebleViewModel extends AndroidViewModel {
 
     public LiveData<Inmueble> getInmuebleDetalle(){ return inmuebleDetalleM; }
 
+    public LiveData<String> getTextoDisponible(){
+        return textoDisponible;
+    }
+
     public void recuperarInmueble(Bundle bundle){
         Inmueble inmueble = (Inmueble)
         bundle.getSerializable("inmueble", Inmueble.class);
         inmuebleDetalleM.setValue(inmueble);
+        if(inmueble.isDisponible()){
+            textoDisponible.postValue("Disponible");
+        } else {
+            textoDisponible.postValue("No disponible");
+        }
+
     }
 
     public void cargarInmuebles(){
@@ -58,5 +70,37 @@ public class InmuebleViewModel extends AndroidViewModel {
                 Log.d("API_Failure", "Falla de red o conversión: " + t.getMessage());
             }
         });
+    }
+
+    public void cambiarDisponibilidad(boolean disponible){
+        Inmueble inmueble = inmuebleDetalleM.getValue();
+
+        inmueble.setDisponible(disponible);
+        String token = ApiClientt.obtenerToken(getApplication());
+        ApiClientt.ServicioInmobiliaria servicio = ApiClientt.getServicio();
+
+        Call<Inmueble> call = servicio.cambiarDisponibilidad(token, inmueble);
+
+        call.enqueue(new Callback<Inmueble>() {
+            @Override
+            public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {
+                if(response.isSuccessful() && response.body()!=null){
+                    Inmueble inmuebleActualizado = response.body();
+                    inmuebleDetalleM.postValue(inmuebleActualizado);
+                    if(inmueble.isDisponible()){
+                        textoDisponible.postValue("Disponible");
+                    } else {
+                        textoDisponible.postValue("No disponible");
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Inmueble> call, Throwable t) {
+
+            }
+        });
+
     }
 }

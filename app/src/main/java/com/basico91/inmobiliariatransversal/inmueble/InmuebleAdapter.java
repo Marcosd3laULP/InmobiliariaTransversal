@@ -59,11 +59,19 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.Inmueb
             binding.tvDireccion.setText(inmueble.getDireccion().trim());
             binding.tvValor.setText("$ " + inmueble.getValor());
 
-            // 🟢 CORRECCIÓN: Agregamos el "/" en medio por si las dudas
+            if (inmueble.isDisponible()) {
+                binding.tvDisponibilidad.setText("Disponible");
+                binding.tvDisponibilidad.setTextColor(itemView.getContext().getResources().getColor(android.R.color.holo_green_dark));
+            } else {
+                binding.tvDisponibilidad.setText("No Disponible");
+                binding.tvDisponibilidad.setTextColor(itemView.getContext().getResources().getColor(android.R.color.holo_red_dark));
+            }
+
+            //Esto es porque no se guardaba bien la imagen
             String rutaImagen = inmueble.getImagen() != null ? inmueble.getImagen().trim() : "";
             String urlImagen = ApiClientt.BASE_URL + "/" + rutaImagen;
 
-            // Reemplazamos barras dobles "//" por una sola si es que quedaron juntas (excepto las de http://)
+            //Esto como seguridad extra por las dudas
             urlImagen = urlImagen.replaceAll("(?<!https?|ftp):/+", "/");
 
             Glide.with(itemView.getContext())

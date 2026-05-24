@@ -48,7 +48,14 @@ public class DetalleInmuebleFragment extends Fragment {
             binding.tvDetalleSuperficie.setText("" +inmueble.getSuperficie());
             binding.tvDetalleLatitud.setText(String.valueOf(inmueble.getLatitud()));
             binding.tvDetalleLongitud.setText(String.valueOf(inmueble.getLongitud()));
+            binding.swDisponible.setChecked(inmueble.isDisponible());
 
         });
+    binding.swDisponible.setOnClickListener(v -> {
+        vm.cambiarDisponibilidad(binding.swDisponible.isChecked());
+    });
+    vm.getTextoDisponible().observe(getViewLifecycleOwner(), mensaje -> {
+        binding.swDisponible.setText(mensaje);
+    });
     }
 }
