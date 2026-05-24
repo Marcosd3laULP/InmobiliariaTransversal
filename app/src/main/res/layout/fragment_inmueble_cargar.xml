@@ -58,7 +58,7 @@
         android:ems="10"
         android:inputType="text"
         android:minHeight="48dp"
-        android:text="Name"
+        android:text=""
         app:layout_constraintStart_toStartOf="@+id/tvCargarDireccion"
         app:layout_constraintTop_toBottomOf="@+id/tvCargarDireccion" />
 
@@ -67,9 +67,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="number"
         android:minHeight="48dp"
-        android:text="Name"
+        android:text=""
         app:layout_constraintStart_toStartOf="@+id/tvCargarValor"
         app:layout_constraintTop_toBottomOf="@+id/tvCargarValor" />
 
@@ -81,7 +81,7 @@
         android:layout_marginBottom="41dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:text=""
         app:layout_constraintBottom_toTopOf="@+id/tvCargarLatitud"
         app:layout_constraintEnd_toEndOf="@+id/etCargarDireccion"
         app:layout_constraintStart_toStartOf="@+id/tvCargarUso"
@@ -104,24 +104,26 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/etCargarUso"
         app:layout_constraintStart_toStartOf="@+id/tvCargarTipo"
         app:layout_constraintTop_toBottomOf="@+id/tvCargarTipo" />
 
     <EditText
         android:id="@+id/etCargarLatitud"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="54dp"
+        android:layout_height="42dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:text=""
         app:layout_constraintBottom_toTopOf="@+id/btCargarImagen"
         app:layout_constraintEnd_toEndOf="@+id/tvCargarUso"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvCargarLatitud"
-        app:layout_constraintTop_toTopOf="@+id/etCargarSuperficie" />
+        app:layout_constraintTop_toTopOf="@+id/etCargarSuperficie"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/etCargarSuperficie"
@@ -130,8 +132,8 @@
         android:layout_marginTop="106dp"
         android:layout_marginBottom="107dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="Name"
+        android:inputType="number"
+        android:text=""
         app:layout_constraintBottom_toTopOf="@+id/btCargar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -153,7 +155,7 @@
         android:layout_height="0dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/etCargarSuperficie"
         app:layout_constraintEnd_toEndOf="@+id/tvCargarLongitud"
         app:layout_constraintStart_toStartOf="@+id/etCargarValor"
@@ -179,7 +181,7 @@
         android:layout_marginEnd="19dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/etCargarUso"
         app:layout_constraintEnd_toEndOf="@+id/tvCargarAmbiente"
         app:layout_constraintStart_toEndOf="@+id/etCargarSuperficie"
@@ -209,8 +211,8 @@
         android:id="@+id/btCargarImagen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
         android:text="Cargar"
         app:layout_constraintStart_toEndOf="@+id/etCargarLatitud"
         app:layout_constraintTop_toBottomOf="@+id/etCargarSuperficie" />
@@ -219,7 +221,17 @@
         android:id="@+id/ivCargarImagen"
         android:layout_width="139dp"
         android:layout_height="146dp"
-        app:srcCompat="@drawable/ic_camera_black_24dp"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="551dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_camera_black_24dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="164dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCargarInmueble" />
 </androidx.constraintlayout.widget.ConstraintLayout>

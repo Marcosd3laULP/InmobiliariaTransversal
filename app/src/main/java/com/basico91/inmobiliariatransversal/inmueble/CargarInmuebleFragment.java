@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.basico91.inmobiliariatransversal.databinding.FragmentInmuebleCargarBinding;
@@ -84,5 +85,11 @@ public class CargarInmuebleFragment extends Fragment {
                     longitud
             );
         });
+    vm.getError().observe(getViewLifecycleOwner(), new Observer<String>() {
+        @Override
+        public void onChanged(String s) {
+            binding.tvCargarInmueble.setText(s);
+        }
+    });
     }
 }

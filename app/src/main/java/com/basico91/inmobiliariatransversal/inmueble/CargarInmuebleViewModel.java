@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -54,7 +55,8 @@ public class CargarInmuebleViewModel extends AndroidViewModel {
             int ambientesPar = Integer.parseInt(ambientes);
             double superficiePar = Double.parseDouble(superficie);
             double valorPar = Double.parseDouble(valor);
-
+            double latitudPar = Double.parseDouble(latitud);
+            double longitudPar = Double.parseDouble(longitud);
 
             Inmueble nuevoInmueble = new Inmueble();
             nuevoInmueble.setDireccion(direccion);
@@ -63,10 +65,11 @@ public class CargarInmuebleViewModel extends AndroidViewModel {
             nuevoInmueble.setAmbientes(ambientesPar);
             nuevoInmueble.setSuperficie(superficiePar);
             nuevoInmueble.setValor(valorPar);
-            nuevoInmueble.setLatitud(latitud);
-            nuevoInmueble.setLongitud(longitud);
+            nuevoInmueble.setLatitud(latitudPar);
+            nuevoInmueble.setLongitud(longitudPar);
             nuevoInmueble.setDisponible(false);
             nuevoInmueble.setIdPropietario(3);
+            nuevoInmueble.setTieneContratoVigente(false);
 
 
             String rutaReal = rutaDeLaImagen(uriImagen, getApplication());
@@ -95,6 +98,13 @@ public class CargarInmuebleViewModel extends AndroidViewModel {
                         altaDeInmueble.setValue(true);
                     } else {
                         errorMensaje.setValue("Error al cargar: " + response.code());
+                        try {
+                            String detalleError = response.errorBody().string();
+                            Log.e("API_ERROR_400", "Detalle del servidor: " + detalleError);
+                            errorMensaje.setValue("Error al cargar: " + detalleError);
+                        } catch (Exception e) {
+                            errorMensaje.setValue("Error al cargar: " + response.code());
+                        }
                     }
                 }
 
