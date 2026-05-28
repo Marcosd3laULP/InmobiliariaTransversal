@@ -66,6 +66,7 @@ public class EditarPerfilViewModel extends AndroidViewModel {
         propietarioActual.setDni(dni);
         propietarioActual.setEmail(email);
         propietarioActual.setTelefono(telefono);
+        propietarioActual.setClave(null);
 
 
         String token = ApiClientt.obtenerToken(getApplication());
