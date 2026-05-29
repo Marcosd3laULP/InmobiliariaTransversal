@@ -11,6 +11,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.basico91.inmobiliariatransversal.modelos.Contrato;
 import com.basico91.inmobiliariatransversal.modelos.Inmueble;
+import com.basico91.inmobiliariatransversal.modelos.Pago;
 import com.basico91.inmobiliariatransversal.request.ApiClientt;
 
 import java.util.List;
@@ -25,17 +26,32 @@ public class ContratoViewModel extends AndroidViewModel {
 
     private MutableLiveData<Inmueble> inmuebleMutable = new MutableLiveData<>();
     private MutableLiveData<Contrato> contratoMutable = new MutableLiveData<>();
+
+    private MutableLiveData<Pago> pagoMutable = new MutableLiveData<>();
+    private MutableLiveData<List<Pago>> listaPagos = new MutableLiveData<>();
     public ContratoViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<List<Inmueble>> getListaInmuebleAlquier(){return listaDeInmuebleAlquiler;}
+    public LiveData<List<Inmueble>> getListaInmuebleAlquier() {
+        return listaDeInmuebleAlquiler;
+    }
 
-    public LiveData<Contrato> getContratoMutable(){return contratoMutable; }
+    public LiveData<Contrato> getContratoMutable() {
+        return contratoMutable;
+    }
 
-    public LiveData<Inmueble> getInmuebleMutable(){return inmuebleMutable; }
+    public LiveData<Pago> getPagoMutable() {
+        return pagoMutable;
+    }
 
-    public void CargarInmueblesAlquilados(){
+    public LiveData<List<Pago>> getListaPagos(){return listaPagos; }
+
+    public LiveData<Inmueble> getInmuebleMutable() {
+        return inmuebleMutable;
+    }
+
+    public void CargarInmueblesAlquilados() {
         String token = ApiClientt.obtenerToken(getApplication());
 
         ApiClientt.ServicioInmobiliaria servicio = ApiClientt.getServicio();
@@ -43,7 +59,7 @@ public class ContratoViewModel extends AndroidViewModel {
         call.enqueue(new Callback<List<Inmueble>>() {
             @Override
             public void onResponse(Call<List<Inmueble>> call, Response<List<Inmueble>> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     listaDeInmuebleAlquiler.postValue(response.body());
                 }
             }
@@ -55,10 +71,10 @@ public class ContratoViewModel extends AndroidViewModel {
         });
     }
 
-    public void RecuperarContrato(Bundle bundle){
+    public void RecuperarContrato(Bundle bundle) {
         Inmueble inmueble = (Inmueble)
-        bundle.getSerializable("idInmueble", Inmueble.class);
-        if(inmueble != null){
+                bundle.getSerializable("idInmueble", Inmueble.class);
+        if (inmueble != null) {
             inmuebleMutable.setValue(inmueble);
             int idInmueble = inmueble.getIdInmueble();
 
@@ -68,7 +84,7 @@ public class ContratoViewModel extends AndroidViewModel {
             call.enqueue(new Callback<Contrato>() {
                 @Override
                 public void onResponse(Call<Contrato> call, Response<Contrato> response) {
-                    if(response.isSuccessful() && response.body() != null){
+                    if (response.isSuccessful() && response.body() != null) {
                         contratoMutable.postValue(response.body());
                     }
                 }
@@ -76,6 +92,34 @@ public class ContratoViewModel extends AndroidViewModel {
                 @Override
                 public void onFailure(Call<Contrato> call, Throwable t) {
                     Log.e("API_FAILURE", "Fallo total en la comunicación: " + t.getMessage());
+                }
+            });
+        }
+    }
+
+    public void recuperarPagosDeUnContrato(Bundle bundle) {
+        Contrato contrato = (Contrato)
+                bundle.getSerializable("idContrato", Contrato.class);
+        if (contrato != null) {
+            contratoMutable.setValue(contrato);
+            int idContrato = contrato.getIdContrato();
+            String token = ApiClientt.obtenerToken(getApplication());
+
+            ApiClientt.ServicioInmobiliaria servicio = ApiClientt.getServicio();
+            Call<List<Pago>> call = servicio.traerPagos(token, idContrato);
+            call.enqueue(new Callback<List<Pago>>() {
+                @Override
+                public void onResponse(Call<List<Pago>> call, Response<List<Pago>> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        pagoMutable.postValue((Pago) response.body());
+                    } else {
+                        Log.d("API_PAGOS", "error codigo: " + response.code());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Pago>> call, Throwable t) {
+                    Log.d("API_PAGOS", "Error de conexion: " + t.getMessage());
                 }
             });
         }
