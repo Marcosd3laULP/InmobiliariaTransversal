@@ -77,7 +77,7 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.Inmueb
             Glide.with(itemView.getContext())
                     .load(urlImagen)
                     .placeholder(R.drawable.ic_launcher_foreground)
-                    .error(R.drawable.ic_slideshow_black_24dp) // Si salta este icono, la URL sigue mal construida
+                    .error(R.drawable.ic_slideshow_black_24dp)
                     .into(binding.ivFotoInmueble);
 
             itemView.setOnClickListener(v -> {

@@ -44,13 +44,21 @@
         android:id="@+id/nav_inquilino"
         android:name="com.basico91.inmobiliariatransversal.inquilino.InquilinoFragment"
         android:label="Inquilino"
-        tools:layout="@layout/fragment_inquilino" />
+        tools:layout="@layout/fragment_inquilino" >
+        <action
+            android:id="@+id/action_nav_inquilino_to_inquilinoFragmentDetalle"
+            app:destination="@id/inquilinoFragmentDetalle" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_contrato"
         android:name="com.basico91.inmobiliariatransversal.contrato.ContratoFragment"
         android:label="Contrato"
-        tools:layout="@layout/fragment_contrato" />
+        tools:layout="@layout/fragment_contrato" >
+        <action
+            android:id="@+id/action_nav_contrato_to_contratoFragmentDetalle"
+            app:destination="@id/contratoFragmentDetalle" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_logOut"
@@ -90,5 +98,35 @@
         <action
             android:id="@+id/action_cargarInmuebleFragment_to_nav_inmueble"
             app:destination="@id/nav_inmueble" />
+    </fragment>
+    <fragment
+        android:id="@+id/contratoFragmentDetalle"
+        android:name="com.basico91.inmobiliariatransversal.contrato.ContratoFragmentDetalle"
+        android:label="fragment_contrato_detalle"
+        tools:layout="@layout/fragment_contrato_detalle" >
+        <action
+            android:id="@+id/action_contratoFragmentDetalle_to_pagoFragment"
+            app:destination="@id/pagoFragment" />
+        <action
+            android:id="@+id/action_contratoFragmentDetalle_to_nav_contrato"
+            app:destination="@id/nav_contrato" />
+    </fragment>
+    <fragment
+        android:id="@+id/pagoFragment"
+        android:name="com.basico91.inmobiliariatransversal.contrato.PagoFragment"
+        android:label="fragment_pago"
+        tools:layout="@layout/fragment_pago" >
+        <action
+            android:id="@+id/action_pagoFragment_to_contratoFragmentDetalle"
+            app:destination="@id/contratoFragmentDetalle" />
+    </fragment>
+    <fragment
+        android:id="@+id/inquilinoFragmentDetalle"
+        android:name="com.basico91.inmobiliariatransversal.inquilino.InquilinoFragmentDetalle"
+        android:label="fragment_inquilino_detalle"
+        tools:layout="@layout/fragment_inquilino_detalle" >
+        <action
+            android:id="@+id/action_inquilinoFragmentDetalle_to_nav_inquilino"
+            app:destination="@id/nav_inquilino" />
     </fragment>
 </navigation>
