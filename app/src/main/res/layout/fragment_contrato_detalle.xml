@@ -11,43 +11,55 @@
         android:id="@+id/tvContratoTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="38dp"
+        android:layout_marginTop="52dp"
         android:text="Informacion del contrato"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvCodigoContrato"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvCodigoContrato"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="52dp"
         android:text="Codigo contrato"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/tvContratoTitulo"
-        app:layout_constraintStart_toStartOf="@+id/tvContratoTitulo"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvContratoTitulo" />
+
+    <TextView
+        android:id="@+id/tvCodigoCampoContrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCodigoContrato" />
 
     <TextView
         android:id="@+id/tvContratoFechaInicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="20dp"
         android:text="Fecha de Inicio"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvCodigoCampoContrato"
-        app:layout_constraintStart_toEndOf="@+id/tvCodigoCampoContrato"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCodigoCampoContrato" />
 
     <TextView
         android:id="@+id/tvContratoFechaFin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="24dp"
         android:text="Fecha de finalizacion"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFechaInicioCampo" />
 
@@ -55,32 +67,34 @@
         android:id="@+id/tvMontoAlquiler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="21dp"
         android:text="Monto alquiler"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvInmuebleCampoContrato"
-        app:layout_constraintStart_toEndOf="@+id/tvInmuebleCampoContrato"
-        app:layout_constraintTop_toBottomOf="@+id/tvInmuebleCampoContrato" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFechaFinCampo" />
 
     <TextView
         android:id="@+id/tvContratoInquilino"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="152dp"
         android:text="Inquilino"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFechaFinCampo" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvContratoInmueble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="52dp"
         android:text="Inmueble"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.018"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMontoCampo" />
 
@@ -88,31 +102,21 @@
         android:id="@+id/btPagosContrato"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="273dp"
+        android:layout_marginBottom="76dp"
+        android:enabled="false"
         android:text="Pagos"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/tvCodigoCampoContrato"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="1dp"
-        android:text="TextView"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tvCodigoContrato"
-        app:layout_constraintTop_toBottomOf="@+id/tvCodigoContrato" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvFechaInicioCampo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:text="TextView"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvContratoFechaInicio" />
 
@@ -120,19 +124,23 @@
         android:id="@+id/tvFechaFinCampo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="TextView"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tvMontoAlquiler"
-        app:layout_constraintTop_toBottomOf="@+id/tvMontoAlquiler" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvContratoFechaFin" />
 
     <TextView
         android:id="@+id/tvMontoCampo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:text="TextView"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tvContratoInquilino"
-        app:layout_constraintTop_toBottomOf="@+id/tvContratoInquilino" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMontoAlquiler" />
 
     <TextView
         android:id="@+id/tvInquilinoCampoContrato"
@@ -140,8 +148,10 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tvContratoInmueble"
-        app:layout_constraintTop_toBottomOf="@+id/tvContratoInmueble" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvContratoInquilino" />
 
     <TextView
         android:id="@+id/tvInmuebleCampoContrato"
@@ -149,6 +159,8 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tvContratoFechaFin"
-        app:layout_constraintTop_toBottomOf="@+id/tvContratoFechaFin" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvContratoInmueble" />
 </androidx.constraintlayout.widget.ConstraintLayout>

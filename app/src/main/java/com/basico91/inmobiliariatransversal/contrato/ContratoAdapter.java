@@ -33,6 +33,7 @@ public class ContratoAdapter extends RecyclerView.Adapter<ContratoAdapter.Contra
 
     public void setListaInmueblesAlquilados(List<Inmueble> inmuebles){
         this.listaDeInmueblesConAlquiler = inmuebles;
+        notifyDataSetChanged();
     }
 
     @NonNull

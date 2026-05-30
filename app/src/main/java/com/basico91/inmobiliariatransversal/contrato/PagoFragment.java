@@ -39,5 +39,7 @@ public class PagoFragment extends Fragment {
             pagoAdapter.setListaDepagos(listaDePagos);
         });
         vm.recuperarPagosDeUnContrato(getArguments());
+
+
     }
 }

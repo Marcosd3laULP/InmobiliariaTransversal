@@ -1,9 +1,12 @@
 package com.basico91.inmobiliariatransversal.modelos;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class Inmueble implements Serializable {
 
+    @SerializedName("idInmueble")
     private int IdInmueble;
     private String direccion;
     private String uso;

@@ -72,19 +72,20 @@ public class ContratoViewModel extends AndroidViewModel {
     }
 
     public void RecuperarContrato(Bundle bundle) {
-        Inmueble inmueble = (Inmueble)
-                bundle.getSerializable("idInmueble", Inmueble.class);
-        if (inmueble != null) {
-            inmuebleMutable.setValue(inmueble);
-            int idInmueble = inmueble.getIdInmueble();
+       int idInmueble = bundle.getInt("idInmueble", -1);
+
+        if (idInmueble != -1) {
 
             String token = ApiClientt.obtenerToken(getApplication());
             ApiClientt.ServicioInmobiliaria servicio = ApiClientt.getServicio();
+            Log.d("API_CONTRATO", "Se va a pedir el contrato para el inmueble ID: " + idInmueble);
             Call<Contrato> call = servicio.traerContrato(token, idInmueble);
             call.enqueue(new Callback<Contrato>() {
                 @Override
                 public void onResponse(Call<Contrato> call, Response<Contrato> response) {
+                    Log.d("API_CONTRATO", "Código de respuesta: " + response.code());
                     if (response.isSuccessful() && response.body() != null) {
+                        Log.d("API_CONTRATO", "¡Contrato recibido con éxito!: " + response.body().toString());
                         contratoMutable.postValue(response.body());
                     }
                 }

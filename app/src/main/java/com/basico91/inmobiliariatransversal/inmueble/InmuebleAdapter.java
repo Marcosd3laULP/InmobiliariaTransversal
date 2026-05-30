@@ -28,6 +28,7 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.Inmueb
     }
     public void setListaInmuebles(List<Inmueble> inmuebles){
         this.listaDeInmuebles = inmuebles;
+        notifyDataSetChanged();
 
     }
 

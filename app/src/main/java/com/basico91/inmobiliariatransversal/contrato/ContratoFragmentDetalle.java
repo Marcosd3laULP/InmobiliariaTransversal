@@ -47,12 +47,14 @@ public class ContratoFragmentDetalle extends Fragment {
 
     vm.getContratoMutable().observe(getViewLifecycleOwner(), contrato -> {
         idContratoActual = contrato.getIdContrato();
-        binding.tvCodigoCampoContrato.setText(contrato.getIdContrato());
+        binding.tvCodigoCampoContrato.setText(String.valueOf(contrato.getIdContrato()));
         binding.tvFechaInicioCampo.setText(contrato.getFechaInicio());
         binding.tvFechaFinCampo.setText(contrato.getFechaFinalizacion());
-        binding.tvMontoCampo.setText(contrato.getMontoAlquler());
+        binding.tvMontoCampo.setText(String.valueOf(contrato.getMontoAlquler()));
         binding.tvInquilinoCampoContrato.setText(contrato.getInquilino().getNombre());
         binding.tvInmuebleCampoContrato.setText(contrato.getInmueble().getDireccion());
+
+        binding.btPagosContrato.setEnabled(true);
     });
     binding.btPagosContrato.setOnClickListener(v ->{
      Bundle bundle = new Bundle();

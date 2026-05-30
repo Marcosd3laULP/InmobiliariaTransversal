@@ -34,7 +34,7 @@ public class ContratoFragment extends Fragment {
         binding = FragmentContratoBinding.inflate(inflater, container, false);
         adaptador = new ContratoAdapter(inmueble -> {
             Bundle bundle = new Bundle();
-            bundle.putSerializable("idInmueble", inmueble);
+            bundle.putSerializable("idInmueble", inmueble.getIdInmueble());
 
             NavController nav = Navigation.findNavController(requireView());
             nav.navigate(R.id.action_nav_contrato_to_contratoFragmentDetalle, bundle);
