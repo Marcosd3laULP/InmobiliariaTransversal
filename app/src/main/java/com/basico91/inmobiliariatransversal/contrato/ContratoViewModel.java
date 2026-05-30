@@ -99,20 +99,20 @@ public class ContratoViewModel extends AndroidViewModel {
     }
 
     public void recuperarPagosDeUnContrato(Bundle bundle) {
-        Contrato contrato = (Contrato)
-                bundle.getSerializable("idContrato", Contrato.class);
-        if (contrato != null) {
-            contratoMutable.setValue(contrato);
-            int idContrato = contrato.getIdContrato();
+        if(bundle != null){
+        int idContrato = bundle.getInt("idContrato", -1);
+        if (idContrato != -1) {
             String token = ApiClientt.obtenerToken(getApplication());
-
+            Log.d("API_PAGOS", "Se va a pedir los pagos para el contrato ID: " + idContrato);
             ApiClientt.ServicioInmobiliaria servicio = ApiClientt.getServicio();
             Call<List<Pago>> call = servicio.traerPagos(token, idContrato);
             call.enqueue(new Callback<List<Pago>>() {
                 @Override
                 public void onResponse(Call<List<Pago>> call, Response<List<Pago>> response) {
                     if (response.isSuccessful() && response.body() != null) {
-                        pagoMutable.postValue((Pago) response.body());
+                        Log.d("API_PAGOS", "Código de respuesta: " + response.code());
+                        listaPagos.postValue(response.body());
+                        Log.d("API_PAGOS", "¡Pagos recibidos con éxito!: " + response.body().toString());
                     } else {
                         Log.d("API_PAGOS", "error codigo: " + response.code());
                     }
@@ -123,6 +123,8 @@ public class ContratoViewModel extends AndroidViewModel {
                     Log.d("API_PAGOS", "Error de conexion: " + t.getMessage());
                 }
             });
+
+            }
         }
     }
 }

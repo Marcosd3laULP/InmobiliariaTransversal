@@ -59,9 +59,8 @@ public class ContratoFragmentDetalle extends Fragment {
     binding.btPagosContrato.setOnClickListener(v ->{
      Bundle bundle = new Bundle();
      bundle.putInt("idContrato", idContratoActual);
-
         NavController nav = Navigation.findNavController(v);
-        nav.navigate(R.id.action_contratoFragmentDetalle_to_pagoFragment);
+        nav.navigate(R.id.action_contratoFragmentDetalle_to_pagoFragment, bundle);
          });
     }
 }

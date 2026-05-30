@@ -1,11 +1,14 @@
 package com.basico91.inmobiliariatransversal.modelos;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class Contrato implements Serializable {
     private int idContrato;
     private String fechaInicio;
     private String fechaFinalizacion;
+    @SerializedName("montoAlquiler")
     private int montoAlquler;
 
     private boolean estado;

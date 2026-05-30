@@ -35,11 +35,11 @@ public class PagoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         vm = new ViewModelProvider(this).get(ContratoViewModel.class);
+        vm.recuperarPagosDeUnContrato(getArguments());
+
         vm.getListaPagos().observe(getViewLifecycleOwner(), listaDePagos ->{
             pagoAdapter.setListaDepagos(listaDePagos);
         });
-        vm.recuperarPagosDeUnContrato(getArguments());
-
 
     }
 }

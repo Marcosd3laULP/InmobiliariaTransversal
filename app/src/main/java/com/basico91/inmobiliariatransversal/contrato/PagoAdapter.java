@@ -50,11 +50,11 @@ public class PagoAdapter extends RecyclerView.Adapter<PagoAdapter.PagoViewHolder
             this.binding = binding;
         }
         public void bind(Pago pago){
-        binding.tvCodigoPago.setText(pago.getIdPago());
-        binding.tvNumPago.setText(pago.getIdContrato());
+        binding.tvCodigoPago.setText(String.valueOf(pago.getIdPago()));
+        binding.tvNumPago.setText(String.valueOf(pago.getIdContrato()));
         binding.tvFechaPago.setText(pago.getFechaPago());
-        binding.tvPagoImporte.setText((int) pago.getMonto());
-        binding.tvPagoContratoCod.setText(pago.getIdContrato());
+        binding.tvPagoImporte.setText(String.valueOf(pago.getMonto()));
+        binding.tvPagoContratoCod.setText(String.valueOf(pago.getIdContrato()));
         }
     }
 }
