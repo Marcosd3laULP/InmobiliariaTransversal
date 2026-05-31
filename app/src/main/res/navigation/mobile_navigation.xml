@@ -102,8 +102,8 @@
     <fragment
         android:id="@+id/contratoFragmentDetalle"
         android:name="com.basico91.inmobiliariatransversal.contrato.ContratoFragmentDetalle"
-        android:label="fragment_contrato_detalle"
-        tools:layout="@layout/fragment_contrato_detalle" >
+        android:label="Detalle"
+        tools:layout="@layout/fragment_contrato_detalle">
         <action
             android:id="@+id/action_contratoFragmentDetalle_to_pagoFragment"
             app:destination="@id/pagoFragment" />
@@ -123,8 +123,8 @@
     <fragment
         android:id="@+id/inquilinoFragmentDetalle"
         android:name="com.basico91.inmobiliariatransversal.inquilino.InquilinoFragmentDetalle"
-        android:label="fragment_inquilino_detalle"
-        tools:layout="@layout/fragment_inquilino_detalle" >
+        android:label="Detalle"
+        tools:layout="@layout/fragment_inquilino_detalle">
         <action
             android:id="@+id/action_inquilinoFragmentDetalle_to_nav_inquilino"
             app:destination="@id/nav_inquilino" />
