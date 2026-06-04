@@ -1,237 +1,332 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F4F6F9"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/tvCargarInmueble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:text="Nuevo inmueble"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvCargarDireccion"
+        android:layout_marginTop="16dp"
+        android:text="Nuevo Inmueble"
+        android:textColor="#1E3A8A"
+        android:textSize="26sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tvCargarDireccion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="203dp"
-        android:text="Direccion"
-        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvCargarValor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="22dp"
-        android:text="Valor"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCargarDireccion" />
-
-    <TextView
-        android:id="@+id/tvCargarTipo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="10dp"
-        android:text="Tipo"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCargarValor" />
-
-    <EditText
-        android:id="@+id/etCargarDireccion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:ems="10"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="@+id/tvCargarDireccion"
-        app:layout_constraintTop_toBottomOf="@+id/tvCargarDireccion" />
-
-    <EditText
-        android:id="@+id/etCargarValor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="@+id/tvCargarValor"
-        app:layout_constraintTop_toBottomOf="@+id/tvCargarValor" />
-
-    <EditText
-        android:id="@+id/etCargarUso"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="41dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/tvCargarLatitud"
-        app:layout_constraintEnd_toEndOf="@+id/etCargarDireccion"
-        app:layout_constraintStart_toStartOf="@+id/tvCargarUso"
-        app:layout_constraintTop_toTopOf="@+id/tvCargarUso" />
-
-    <TextView
-        android:id="@+id/tvCargarUso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="8dp"
-        android:text="Uso"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/etCargarTipo"
-        app:layout_constraintTop_toBottomOf="@+id/etCargarValor" />
-
-    <EditText
-        android:id="@+id/etCargarTipo"
-        android:layout_width="92dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="@+id/etCargarUso"
-        app:layout_constraintStart_toStartOf="@+id/tvCargarTipo"
-        app:layout_constraintTop_toBottomOf="@+id/tvCargarTipo" />
-
-    <EditText
-        android:id="@+id/etCargarLatitud"
-        android:layout_width="54dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/btCargarImagen"
-        app:layout_constraintEnd_toEndOf="@+id/tvCargarUso"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvCargarLatitud"
-        app:layout_constraintTop_toTopOf="@+id/etCargarSuperficie"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/etCargarSuperficie"
-        android:layout_width="59dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="106dp"
-        android:layout_marginBottom="107dp"
-        android:ems="10"
-        android:inputType="number"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/btCargar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCargarUso" />
-
-    <TextView
-        android:id="@+id/tvCargarLatitud"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:text="Latitud"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/etCargarLatitud"
-        app:layout_constraintStart_toEndOf="@+id/tvCargarLongitud" />
-
-    <EditText
-        android:id="@+id/etCargarLongitud"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="@+id/etCargarSuperficie"
-        app:layout_constraintEnd_toEndOf="@+id/tvCargarLongitud"
-        app:layout_constraintStart_toStartOf="@+id/etCargarValor"
-        app:layout_constraintTop_toBottomOf="@+id/tvCargarLongitud" />
-
-    <TextView
-        android:id="@+id/tvCargarLongitud"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="2dp"
-        android:text="Longitud"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvCargarLatitud"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/etCargarAmbiente"
-        android:layout_width="59dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="19dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="@+id/etCargarUso"
-        app:layout_constraintEnd_toEndOf="@+id/tvCargarAmbiente"
-        app:layout_constraintStart_toEndOf="@+id/etCargarSuperficie"
-        app:layout_constraintTop_toBottomOf="@+id/tvCargarAmbiente" />
-
-    <TextView
-        android:id="@+id/tvCargarAmbiente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
-        android:text="Ambientes"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/etCargarUso"
-        app:layout_constraintStart_toEndOf="@+id/etCargarUso" />
-
-    <Button
-        android:id="@+id/btCargar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="39dp"
-        android:layout_marginBottom="39dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/btCargarImagen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
-        android:text="Cargar"
-        app:layout_constraintStart_toEndOf="@+id/etCargarLatitud"
-        app:layout_constraintTop_toBottomOf="@+id/etCargarSuperficie" />
-
-    <ImageView
-        android:id="@+id/ivCargarImagen"
-        android:layout_width="139dp"
-        android:layout_height="146dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_camera_black_24dp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="164dp"
-        android:text="TextView"
+        android:layout_marginTop="4dp"
+        android:text="Complete los datos del inmueble"
+        android:textColor="#64748B"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCargarInmueble" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/contenedorAzul"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:cardBackgroundColor="#1E3A8A"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvMensajeFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="12dp"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvCargarDireccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dirección"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etCargarDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp"
+                android:background="@android:color/white"
+                android:ems="10"
+                android:hint="Ej. Av. Mitre 123"
+                android:inputType="text"
+                android:paddingHorizontal="12dp"
+                android:textColor="#1E293B" />
+
+            <TextView
+                android:id="@+id/tvCargarValor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Valor (USD)"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etCargarValor"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp"
+                android:background="@android:color/white"
+                android:ems="10"
+                android:hint="Monto en dólares"
+                android:inputType="number"
+                android:paddingHorizontal="12dp"
+                android:textColor="#1E293B" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvCargarTipo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tipo"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinTipo"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@android:color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvCargarUso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Uso"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinUso"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@android:color/white" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvCargarLatitud2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Superficie (m²)"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etCargarSuperficie"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@android:color/white"
+                        android:inputType="number"
+                        android:paddingHorizontal="12dp"
+                        android:textColor="#1E293B" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvCargarAmbiente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ambientes"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etCargarAmbiente"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@android:color/white"
+                        android:inputType="number"
+                        android:paddingHorizontal="12dp"
+                        android:textColor="#1E293B" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvCargarLatitud"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Latitud"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etCargarLatitud"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@android:color/white"
+                        android:inputType="text"
+                        android:paddingHorizontal="12dp"
+                        android:textColor="#1E293B" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvCargarLongitud"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Longitud"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etCargarLongitud"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@android:color/white"
+                        android:inputType="text"
+                        android:paddingHorizontal="12dp"
+                        android:textColor="#1E293B" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/contenedorImagen"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contenedorAzul">
+
+        <ImageView
+            android:id="@+id/ivCargarImagen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ic_camera_black_24dp" />
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btCargarImagen"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Seleccionar Imagen"
+        android:textColor="#1E3A8A"
+        app:layout_constraintBottom_toBottomOf="@+id/contenedorImagen"
+        app:layout_constraintStart_toEndOf="@+id/contenedorImagen"
+        app:layout_constraintTop_toTopOf="@+id/contenedorImagen" />
+
+    <Button
+        android:id="@+id/btCargar"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#1E3A8A"
+        android:text="Guardar Inmueble"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contenedorImagen"
+        app:layout_constraintVertical_bias="1.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

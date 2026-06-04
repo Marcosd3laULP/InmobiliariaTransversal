@@ -5,6 +5,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.basico91.inmobiliariatransversal.request.ApiClientt;
 
@@ -14,12 +16,24 @@ import retrofit2.Response;
 
 public class CambiarPassViewModel extends AndroidViewModel {
 
-
+    private MutableLiveData<String> errorMensaje = new MutableLiveData<>();
     public CambiarPassViewModel(@NonNull Application application) {
         super(application);
     }
 
+    public LiveData<String> getError() {return errorMensaje; }
     public void cambiarPasswords(String actual, String nueva){
+       if(actual.isEmpty() || nueva.isEmpty()){
+           errorMensaje.setValue("Para cambiar la contraseña, debe rellenar ambos campos");
+           return;
+
+       }
+
+        if(actual == nueva){
+            errorMensaje.setValue("La nueva contraseña, no puede ser igual a la actual");
+            return;
+        }
+
     String token = ApiClientt.obtenerToken(getApplication());
     ApiClientt.ServicioInmobiliaria servicio = ApiClientt.getServicio();
     Call<Void> call = servicio.cambiarContrasenia(token, actual, nueva);

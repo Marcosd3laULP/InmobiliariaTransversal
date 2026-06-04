@@ -1,5 +1,6 @@
 package com.basico91.inmobiliariatransversal.perfil;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -52,30 +53,24 @@ public class EditarPerfilFragment extends Fragment {
                     binding.etNombreEditar.getText().toString(),
                     binding.etApellidoEditar.getText().toString(),
                     binding.etDniEditar.getText().toString(),
-                    binding.etEmailEditar.getText().toString(),
-                    binding.etTelefonoEditar.getText().toString()
+                    binding.etTelefonoEditar.getText().toString(),
+                    binding.etEmailEditar.getText().toString()
+
 
             );
         });
 
-        vm.getMensaje().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String textoMensaje) {
-                if (textoMensaje != null) {
-                    Toast.makeText(getContext(), textoMensaje, Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        vm.getMensaje().observe(getViewLifecycleOwner(), textoMensaje -> {
+
+                binding.tvFeedbackUsuario.setText(textoMensaje);
+                binding.tvFeedbackUsuario.setTextColor(Color.RED);
+                binding.tvFeedbackUsuario.setVisibility(View.VISIBLE);
+                });
 
 
-        vm.getExito().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean fueExitoso) {
-                if (fueExitoso) {
-                    Toast.makeText(getContext(), "Perfil actualizado con éxito", Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(getView()).popBackStack();
-                }
-            }
+        vm.getExito().observe(getViewLifecycleOwner(), unicamenteSiEsExitoso -> {
+            Toast.makeText(getContext(), "Perfil actualizado con éxito", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(getView()).popBackStack();
         });
     }
     @Override

@@ -52,12 +52,12 @@ public class EditarPerfilViewModel extends AndroidViewModel {
 
     public void guardarCambios(String nombre, String apellido, String dni, String telefono, String email){
         if(nombre.trim().isEmpty() || apellido.trim().isEmpty() || dni.trim().isEmpty() ||  telefono.trim().isEmpty() || email.trim().isEmpty()){
-            mensaje.postValue("No puede dejar campos vacios");
+            mensaje.setValue("No puede dejar campos vacios");
             return;
         }
         Propietario propietarioActual = propietarioEdit.getValue();
         if(propietarioActual == null){
-            mensaje.postValue("Error interno: no se encontraon los datos del propietario");
+            mensaje.setValue("Error interno: no se encontraon los datos del propietario");
             return;
         }
 
@@ -71,7 +71,7 @@ public class EditarPerfilViewModel extends AndroidViewModel {
 
         String token = ApiClientt.obtenerToken(getApplication());
         if(token == null || token.isEmpty()){
-            mensaje.postValue("Sesion expirada inicie sesion nuevamente");
+            mensaje.setValue("Sesion expirada inicie sesion nuevamente");
             return;
         }
 
@@ -83,10 +83,10 @@ public class EditarPerfilViewModel extends AndroidViewModel {
             public void onResponse(Call<Propietario> call, Response<Propietario> response) {
                 if(response.isSuccessful() && response.body() != null){
                     propietarioEdit.postValue(response.body());
-                    mensaje.postValue("Perfil actualizado con exito");
                     exito.postValue(true);
                 } else {
-                    mensaje.postValue("Error al actualizar el perfil");
+                    Log.d("API_PERFIL", String.valueOf(response.code()));
+
                 }
             }
 

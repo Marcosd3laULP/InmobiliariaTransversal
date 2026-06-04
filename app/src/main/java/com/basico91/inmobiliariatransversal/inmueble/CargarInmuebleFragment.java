@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.net.Uri;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -60,6 +61,27 @@ public class CargarInmuebleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        String[] opcionesTipo = {"Casa", "Departamento", "Local"};
+        ArrayAdapter<String> adapterTipo = new ArrayAdapter<>(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                opcionesTipo
+        );
+
+        adapterTipo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.spinTipo.setAdapter(adapterTipo);
+
+
+        String[] opcionesUso = {"Residencial", "Comercial"};
+        ArrayAdapter<String> adapterUso = new ArrayAdapter<>(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                opcionesUso
+        );
+        adapterUso.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.spinUso.setAdapter(adapterUso);
+
         vm = new ViewModelProvider(this).get(CargarInmuebleViewModel.class);
 
         binding.btCargarImagen.setOnClickListener(v -> {
@@ -69,8 +91,8 @@ public class CargarInmuebleFragment extends Fragment {
 
             String direccion = binding.etCargarDireccion.getText().toString();
             String valor = binding.etCargarValor.getText().toString();
-            String uso =  binding.etCargarUso.getText().toString();
-            String tipo = binding.etCargarTipo.getText().toString();
+            String tipo = binding.spinTipo.getSelectedItem().toString();
+            String uso = binding.spinUso.getSelectedItem().toString();
             String ambientes = binding.etCargarAmbiente.getText().toString();
             String superficie = binding.etCargarSuperficie.getText().toString();
             String latitud = binding.etCargarLatitud.getText().toString();
@@ -87,15 +109,20 @@ public class CargarInmuebleFragment extends Fragment {
                     latitud,
                     longitud
             );
-            Toast.makeText(getContext(), "Inmueble cargado con exito", Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(getView()).popBackStack();
+
         });
     vm.getError().observe(getViewLifecycleOwner(), new Observer<String>() {
         @Override
         public void onChanged(String s) {
-            binding.textView3.setTextColor(Color.RED);
+            binding.tvMensajeFeedback.setText(s);
+            binding.tvMensajeFeedback.setTextColor(Color.RED);
+            binding.tvMensajeFeedback.setVisibility(View.VISIBLE);
         }
     });
+        vm.getAltaDeInmueble().observe(getViewLifecycleOwner(), exito ->{
+            Toast.makeText(getContext(), "Inmueble cargado con exito", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(getView()).popBackStack();
+        });
     }
     @Override
     public void onDestroyView(){

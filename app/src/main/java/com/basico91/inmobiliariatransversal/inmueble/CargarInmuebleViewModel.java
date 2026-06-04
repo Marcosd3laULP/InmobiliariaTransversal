@@ -40,7 +40,7 @@ public class CargarInmuebleViewModel extends AndroidViewModel {
 
     public void cargarInmueble(Uri uriImagen, String direccion, String valor, String uso, String tipo, String ambientes, String superficie, String latitud, String longitud){
 
-       if(direccion.isEmpty() || valor.isEmpty() || uso.isEmpty() || tipo.isEmpty() || ambientes.isEmpty() || superficie.isEmpty() || latitud.isEmpty() || longitud.isEmpty()){
+       if(direccion.trim().isEmpty() || valor.trim().isEmpty() || uso.trim().isEmpty() || tipo.trim().isEmpty() || ambientes.trim().isEmpty() || superficie.trim().isEmpty() || latitud.trim().isEmpty() || longitud.trim().isEmpty()){
            errorMensaje.setValue("Debe completar todos los campos");
            return;
        }
@@ -96,7 +96,7 @@ public class CargarInmuebleViewModel extends AndroidViewModel {
                 @Override
                 public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {
                     if (response.isSuccessful() && response.body() != null) {
-                        altaDeInmueble.setValue(true);
+                        altaDeInmueble.postValue(true);
                     } else {
                         errorMensaje.setValue("Error al cargar: " + response.code());
                         try {
@@ -117,6 +117,7 @@ public class CargarInmuebleViewModel extends AndroidViewModel {
 
         }catch (NumberFormatException e){
             errorMensaje.setValue("los campos ambientes, superficie y valor solo aceptan valores numericos");
+            altaDeInmueble.setValue(false);
         }
     }
 
