@@ -17,11 +17,13 @@ import retrofit2.Response;
 public class CambiarPassViewModel extends AndroidViewModel {
 
     private MutableLiveData<String> errorMensaje = new MutableLiveData<>();
+    private MutableLiveData<Boolean> exito = new MutableLiveData<>();
     public CambiarPassViewModel(@NonNull Application application) {
         super(application);
     }
 
     public LiveData<String> getError() {return errorMensaje; }
+    public LiveData<Boolean> getExito() {return exito; }
     public void cambiarPasswords(String actual, String nueva){
        if(actual.isEmpty() || nueva.isEmpty()){
            errorMensaje.setValue("Para cambiar la contraseña, debe rellenar ambos campos");
@@ -42,6 +44,7 @@ public class CambiarPassViewModel extends AndroidViewModel {
         public void onResponse(Call<Void> call, Response<Void> response) {
             if(response.isSuccessful()){
                 Toast.makeText(getApplication(), "Se cambió con exito la contraseña", Toast.LENGTH_SHORT).show();
+                exito.postValue(true);
             } else{
                 Toast.makeText(getApplication(), "Error al cambiar la contraseña, verifique la actual", Toast.LENGTH_SHORT).show();
             }

@@ -2,6 +2,7 @@ package com.basico91.inmobiliariatransversal.perfil;
 
 import static android.graphics.Color.RED;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,10 +10,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.basico91.inmobiliariatransversal.R;
 import com.basico91.inmobiliariatransversal.databinding.FragmentCambiarPassBinding;
@@ -43,12 +46,17 @@ public class CambiarPassFragment extends Fragment {
                     binding.etNueva.getText().toString());
         });
 
-        vm.getError().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                binding.tvMensajeFeedback.setTextColor(RED);
-                binding.tvMensajeFeedback.setVisibility(View.VISIBLE);
-            }
+        vm.getError().observe(getViewLifecycleOwner(), textoMensaje -> {
+
+            binding.tvMensajeFeedback.setText(textoMensaje);
+            binding.tvMensajeFeedback.setTextColor(Color.RED);
+            binding.tvMensajeFeedback.setVisibility(View.VISIBLE);
+        });
+
+
+        vm.getExito().observe(getViewLifecycleOwner(), unicamenteSiEsExitoso -> {
+            Toast.makeText(getContext(), "Contraseña actualizada con éxito", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(getView()).popBackStack();
         });
     }
 

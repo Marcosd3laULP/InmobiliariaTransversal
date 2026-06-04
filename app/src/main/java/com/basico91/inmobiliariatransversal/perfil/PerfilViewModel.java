@@ -39,8 +39,6 @@ public class PerfilViewModel extends AndroidViewModel {
             return;
         }
 
-
-
         ApiClientt.ServicioInmobiliaria servicio = ApiClientt.getServicio();
         Call<Propietario> call = servicio.obtenerPerfil(token);
 
@@ -53,7 +51,6 @@ public class PerfilViewModel extends AndroidViewModel {
                     Log.d("API_Error", "Mensaje: " + response.message());
                     Log.d("API_Error", "Código Status: " + response.code());
 
-                    // CORREGIDO: Uso de .string() con try-catch para ver el verdadero error del servidor
                     if (response.errorBody() != null) {
                         try {
                             Log.d("API_Error", "Cuerpo del error: " + response.errorBody().string());

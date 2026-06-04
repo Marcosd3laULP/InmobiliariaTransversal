@@ -35,7 +35,7 @@ public class PerfilFragment extends Fragment {
 
         vm = new ViewModelProvider(this).get(PerfilViewModel.class);
 
-        // 1. Observador para pintar los datos cuando Retrofit responda exitosamente
+
         vm.getPropiertario().observe(getViewLifecycleOwner(), new Observer<Propietario>() {
             @Override
             public void onChanged(Propietario propietario) {
@@ -49,20 +49,8 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-        // 2. NUEVO: Observador de errores para saber EXACTAMENTE qué está fallando
-        vm.getMensaje().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String mensaje) {
-                if (mensaje != null) {
-                    Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
-        // 3. Disparamos la carga de datos de la API
         vm.cargarDatos();
 
-        // 4. Configuración del botón de edición
         binding.btEditarPerfil.setOnClickListener(v -> {
             Propietario actual = vm.getPropiertario().getValue();
 
